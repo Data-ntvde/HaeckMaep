@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .shape {
+            position: relative;
+            display: inline-block;
+            margin: 50px;
+            border: 2px solid #333; /* dunkelgraue Umrandung */
+            background-color: #ff0000; /* rote Füllfarbe */
+            transition: background-color 0.5s ease, border 0.5s ease; /* Übergangseffekte */
+        }
+        .shape:hover {
+            background-color: #b30000; /* dunkelrote Füllfarbe beim Mouseover */
+            border: 5px solid #333; /* dickere Umrandung beim Mouseover */
+        }
+        .shape:hover .text {
+            display: block;
+        }
+        .text {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 1em;
+        }
+        #square {
+            width: 100px;
+            height: 100px;
+        }
+        #rectangle {
+            width: 200px;
+            height: 100px;
+        }
+        #circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="square" class="shape">
+        <div class="text">Dies ist ein Quadrat</div>
+    </div>
+    <div id="rectangle" class="shape">
+        <div class="text">Dies ist ein Rechteck</div>
+    </div>
+    <div id="circle" class="shape">
+        <div class="text">Dies ist ein Kreis</div>
+    </div>
+</body>
+</html>
