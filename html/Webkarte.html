@@ -36,12 +36,11 @@
 	</head>
 	
 	<body>
-		<h1>Haecksen</h1>
 		
-		<!-- <img src="img/leaflet_logo.png" width="50%" height="auto"> -->
+		<!-- <img src="img/leaflet_logo.png" width="50%" height="auto"> 
 			<div style="width: 200px; height: 75px;">
 			<img src="img/leaflet_logo.png" width="100%" height="100%">
-			</div>
+			</div> -->
 
 		<!-- <p>
 			bla bla:
@@ -50,7 +49,7 @@
 		
 		<script>
 			//JavaScript-Kommentar: Die 11 steht für die Zoomstufe - 0 waere globale Stufe
-			var mymap = L.map('mapDiv').setView([52.5162746,13.3755154], 13);
+			var mymap = L.map('mapDiv').setView([51.5,11.0], 6);
 			
 			var OpenStreetMap_Mapnik = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			minZoom: 5,
@@ -59,17 +58,51 @@
 			});
 			OpenStreetMap_Mapnik.addTo(mymap);
 			
+			// Polygon-GeoJSON-Layer hinzufügen
 			L.geoJSON(vg250_krs_4326, {
+				style: function (feature) {
+					var attributeValue = feature.properties.haecksen_count_fictive_;
+
+					// Skalierungsfaktor - du kannst dies anpassen, um die Farbintensität zu steuern
+					var scaleFactor = 0.1;
+
+					// Berechne die Helligkeit der Farbe basierend auf dem Attributwert und dem Skalierungsfaktor
+					var brightness = attributeValue * scaleFactor;
+
+					// Begrenze die Helligkeit auf einen Bereich (z. B. 0 bis 1)
+					brightness = Math.min(Math.max(brightness, 0), 1);
+
+					// Konvertiere die Helligkeit in eine Hexadezimalzahl und setze die Farbe
+					var color = '#' + Math.floor(brightness * 255).toString(16).padStart(2, '0').repeat(3);
+
+					return {
+						fillColor: color, 		// Farbe des Polygons
+						color: "#333333",       // Randfarbe des Polygons
+						weight: 1.5             // Linienstärke des Polygons
+					};
+				},
 				onEachFeature: function (feature, layer) {
-					layer.bindPopup(feature.properties.GEN);
+					layer.bindPopup(feature.properties.GEN +"<br>"+ feature.properties.haecksen_count_fictive_ +" Haecksen");
 					}
 			}).addTo(mymap);
 
-			// Groups Spaces GeoJSON-Layer hinzufügen
+			// Punkt-GeoJSON-Layer hinzufügen
 			L.geoJSON(groups_spaces_4326, {
+				pointToLayer: function (feature, latlng) {
+					var count_fictive = feature.properties.count_fictive;
+					var scaleFactor = 5;
+					var radius = Math.sqrt(count_fictive) * scaleFactor;
+					return L.circleMarker(latlng, {
+						radius: radius,
+						fillColor: "#ff7800",
+						color: "#000",
+						weight: 1,
+						opacity: 1,
+						fillOpacity: 0.8
+					});
+				},
 				onEachFeature: function (feature, layer) {
 					layer.bindPopup(feature.properties.city_town +"<br>"+ feature.properties.typ +"<br>"+ feature.properties.website);
-					
 					}
 				
 			}).addTo(mymap);
