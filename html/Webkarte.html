@@ -61,24 +61,26 @@
 			// Polygon-GeoJSON-Layer hinzufügen
 			L.geoJSON(vg250_krs_4326, {
 				style: function (feature) {
+					// Annahme: Das Attribut, das die Färbung bestimmt, heißt 'attributeName'
 					var attributeValue = feature.properties.haecksen_count_fictive_;
 
-					// Skalierungsfaktor - du kannst dies anpassen, um die Farbintensität zu steuern
-					var scaleFactor = 0.1;
+					// Begrenze den Wert des Attributs auf einen Bereich (z. B. 1 bis 20)
+					attributeValue = Math.min(Math.max(attributeValue, 1), 20);
 
-					// Berechne die Helligkeit der Farbe basierend auf dem Attributwert und dem Skalierungsfaktor
-					var brightness = attributeValue * scaleFactor;
+					// Konvertiere den Attributwert in einen Dunkelheitswert (0-1) umgekehrt
+					var darkness = (attributeValue - 1) / 19;
 
-					// Begrenze die Helligkeit auf einen Bereich (z. B. 0 bis 1)
-					brightness = Math.min(Math.max(brightness, 0), 1);
+					// Definiere eine violette Farbpalette
+					var colorPalette = ['#f7f4f9', '#f1ebf7', '#d0aad2', '#99306f', '#67001f'];
 
-					// Konvertiere die Helligkeit in eine Hexadezimalzahl und setze die Farbe
-					var color = '#' + Math.floor(brightness * 255).toString(16).padStart(2, '0').repeat(3);
+					// Wähle die Farbe basierend auf dem Dunkelheitswert
+					var colorIndex = Math.floor(darkness * (colorPalette.length - 1));
+					var color = colorPalette[colorIndex];
 
 					return {
-						fillColor: color, 		// Farbe des Polygons
-						color: "#333333",       // Randfarbe des Polygons
-						weight: 1.5             // Linienstärke des Polygons
+						fillColor: color,
+						color: '#666666',  // Randfarbe des Polygons
+						weight: 1       // Linienstärke des Polygons
 					};
 				},
 				onEachFeature: function (feature, layer) {
