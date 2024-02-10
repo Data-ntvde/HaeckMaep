@@ -1,0 +1,70 @@
+<! DOCTYPE html> <!-- Html-Kommentar: Dokumententyp 5 wird definiert -->
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Haecksen-Karte</title>
+		
+		<!-- Leaflet css und Javascript einbinden -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+		
+		<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+		
+		<!-- jQuery einbinden -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
+		<style>
+			/* CSS-Kommentar: Kartehoehe festlegen:*/
+			#mapDiv { 
+				height: 500px; 
+				width: 800px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.leaflet_logo {
+				height: 3px;
+			}
+		</style>
+
+		<script src="daten/vg250_krs_4326.js"></script>
+		<script src="daten/groups_spaces_4326.js"></script>
+	
+	</head>
+	
+	<body>
+		<h1>Haecksen</h1>
+		
+		<img src="img/leaflet_logo.png"> 
+		<p>
+			bla bla:
+		</p>
+		<div id="mapDiv"></div>
+		
+		<script>
+			//JavaScript-Kommentar: Die 11 steht für die Zoomstufe - 0 waere globale Stufe
+			var mymap = L.map('mapDiv').setView([52.5162746,13.3755154], 13);
+			
+			var OpenStreetMap_Mapnik = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			minZoom: 5,
+			maxZoom: 19,
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			});
+			OpenStreetMap_Mapnik.addTo(mymap);
+			
+			L.geoJSON(vg250_krs_4326, {
+				onEachFeature: function (feature, layer) {
+					layer.bindPopup(feature.properties.GEN);
+					}
+			}).addTo(mymap);
+
+			// Groups Spaces GeoJSON-Layer hinzufügen
+			L.geoJSON(groups_spaces_4326, {
+				onEachFeature: function (feature, layer) {
+					layer.bindPopup(feature.properties.city_town);
+					}
+			}).addTo(mymap);
+
+		</script>
+	</body>
+</html>
