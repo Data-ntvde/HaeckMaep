@@ -16,17 +16,18 @@
 		<style>
 			/* CSS-Kommentar: Kartehoehe festlegen:*/
 			#mapDiv { 
-				height: 500px; 
-				width: 800px;
+				height: 700px; 
+				width: 1000px;
 				margin-left: auto;
 				margin-right: auto;
 			}
 			
-				<!--Hier Haecksen-Logo einsetzen-->
+			<!--CSS für Logo muss im body referenziert werden-->
+			<!--.leaflet_logo {
+			max-width: 30%;
+			height: auto;
+			};-->
 			
-			.leaflet_logo {
-				height: 3px;
-			}
 		</style>
 				<!--Das sind die Geodaten-->
 		<script src="daten/vg250_krs_4326.js"></script>
@@ -37,10 +38,14 @@
 	<body>
 		<h1>Haecksen</h1>
 		
-		<img src="img/leaflet_logo.png"> 
-		<p>
+		<!-- <img src="img/leaflet_logo.png" width="50%" height="auto"> -->
+			<div style="width: 200px; height: 75px;">
+			<img src="img/leaflet_logo.png" width="100%" height="100%">
+			</div>
+
+		<!-- <p>
 			bla bla:
-		</p>
+		</p> -->
 		<div id="mapDiv"></div>
 		
 		<script>
@@ -63,8 +68,10 @@
 			// Groups Spaces GeoJSON-Layer hinzufügen
 			L.geoJSON(groups_spaces_4326, {
 				onEachFeature: function (feature, layer) {
-					layer.bindPopup(feature.properties.city_town);
+					layer.bindPopup(feature.properties.city_town +"<br>"+ feature.properties.typ +"<br>"+ feature.properties.website);
+					
 					}
+				
 			}).addTo(mymap);
 
 		</script>
