@@ -1,114 +1,117 @@
-<! DOCTYPE html> <!-- Html-Kommentar: Dokumententyp 5 wird definiert -->
-
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Haecksen-Karte</title>
-		
-		<!-- Leaflet css und Javascript einbinden -->
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-		
-		<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
-		
-		<!-- jQuery einbinden -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		
-		<style>
-			/* CSS-Kommentar: Kartehoehe festlegen:*/
-			#mapDiv { 
-				height: 700px; 
-				width: 1000px;
-				margin-left: auto;
-				margin-right: auto;
-			}
-			
-			<!--CSS für Logo muss im body referenziert werden-->
-			<!--.leaflet_logo {
-			max-width: 30%;
-			height: auto;
-			};-->
-			
-		</style>
-				<!--Das sind die Geodaten-->
-		<script src="daten/vg250_krs_4326.js"></script>
-		<script src="daten/groups_spaces_4326.js"></script>
-	
-	</head>
-	
-	<body>
-		
-		<!-- <img src="img/leaflet_logo.png" width="50%" height="auto"> 
-			<div style="width: 200px; height: 75px;">
-			<img src="img/leaflet_logo.png" width="100%" height="100%">
-			</div> -->
+<head>
+    <meta charset="utf-8">
+    <title>Haecksen-Karte</title>
+    
+    <!-- Leaflet css und Javascript einbinden -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    
+    <!-- jQuery einbinden -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <style>
+        /* CSS für die Kartehöhe festlegen */
+        #mapDiv { 
+            height: 700px; 
+            width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* CSS für Popup-Styling */
+        .popup-table {
+            display: table;
+            width: auto;
+        }
 
-		<!-- <p>
-			bla bla:
-		</p> -->
-		<div id="mapDiv"></div>
-		
-		<script>
-			//JavaScript-Kommentar: Die 11 steht für die Zoomstufe - 0 waere globale Stufe
-			var mymap = L.map('mapDiv').setView([51.5,11.0], 6);
-			
-			var OpenStreetMap_Mapnik = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			minZoom: 5,
-			maxZoom: 19,
-			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-			});
-			OpenStreetMap_Mapnik.addTo(mymap);
-			
-			// Polygon-GeoJSON-Layer hinzufügen
-			L.geoJSON(vg250_krs_4326, {
-				style: function (feature) {
-					// Annahme: Das Attribut, das die Färbung bestimmt, heißt 'attributeName'
-					var attributeValue = feature.properties.haecksen_count_fictive_;
+        .popup-row {
+            display: table-row;
+        }
 
-					// Begrenze den Wert des Attributs auf einen Bereich (z. B. 1 bis 20)
-					attributeValue = Math.min(Math.max(attributeValue, 1), 20);
+        .popup-key {
+            display: table-cell;
+            font-weight: bold;
+            padding-right: 5px; /* Optional: fügt etwas Abstand zwischen Schlüssel und Wert hinzu */
+        }
 
-					// Konvertiere den Attributwert in einen Dunkelheitswert (0-1) umgekehrt
-					var darkness = (attributeValue - 1) / 19;
+        .popup-value {
+            display: table-cell;
+        }
+    </style>
+    
+    <!-- Das sind die Geodaten -->
+    <script src="daten/vg250_krs_4326.js"></script>
+    <script src="daten/groups_spaces_4326.js"></script>
+</head>
 
-					// Definiere eine violette Farbpalette
-					var colorPalette = ['#f7f4f9', '#f1ebf7', '#d0aad2', '#99306f', '#67001f'];
+<body>
+    <div id="mapDiv"></div>
+    
+    <script>
+        // JavaScript: Kartenansicht mit Zoomstufe 6
+        var mymap = L.map('mapDiv').setView([51.5, 11.0], 6);
 
-					// Wähle die Farbe basierend auf dem Dunkelheitswert
-					var colorIndex = Math.floor(darkness * (colorPalette.length - 1));
-					var color = colorPalette[colorIndex];
+        var OpenStreetMap_Mapnik = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            minZoom: 5,
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
+        OpenStreetMap_Mapnik.addTo(mymap);
 
-					return {
-						fillColor: color,
-						color: '#666666',  // Randfarbe des Polygons
-						weight: 1       // Linienstärke des Polygons
-					};
-				},
-				onEachFeature: function (feature, layer) {
-					layer.bindPopup(feature.properties.GEN +"<br>"+ feature.properties.haecksen_count_fictive_ +" Haecksen");
-					}
-			}).addTo(mymap);
+        // Funktion zum Überprüfen, ob ein Wert nicht Null ist
+        function isNotNull(value) {
+            return value !== null;
+        }
 
-			// Punkt-GeoJSON-Layer hinzufügen
-			L.geoJSON(groups_spaces_4326, {
-				pointToLayer: function (feature, latlng) {
-					var count_fictive = feature.properties.count_fictive;
-					var scaleFactor = 5;
-					var radius = Math.sqrt(count_fictive) * scaleFactor;
-					return L.circleMarker(latlng, {
-						radius: radius,
-						fillColor: "#ff7800",
-						color: "#000",
-						weight: 1,
-						opacity: 1,
-						fillOpacity: 0.8
-					});
-				},
-				onEachFeature: function (feature, layer) {
-					layer.bindPopup(feature.properties.city_town +"<br>"+ feature.properties.typ +"<br>"+ feature.properties.website);
-					}
-				
-			}).addTo(mymap);
+        // Polygon-Layer hinzufügen
+        L.geoJSON(vg250_krs_4326, {
+            style: function (feature) {
+                return {
+                    fillColor: 'transparent', // Transparente Füllfarbe
+                    color: '#666666',         // Randfarbe des Polygons
+                    weight: 1,                // Linienstärke des Polygons
+                    fillOpacity: 0.3          // Transparenz der Füllung (0 für vollständig transparent, 1 für undurchsichtig)
+                };
+            }
+        }).addTo(mymap);
 
-		</script>
-	</body>
+        // Punkt-GeoJSON-Layer hinzufügen
+        L.geoJSON(groups_spaces_4326, {
+            pointToLayer: function (feature, latlng) {
+                var count_fictive = feature.properties.count_fictive;
+                var scaleFactor = 5;
+                var radius = Math.sqrt(count_fictive) * scaleFactor;
+                return L.circleMarker(latlng, {
+                    radius: radius,
+                    fillColor: "#ff7800",
+                    color: "#000",
+                    weight: 1,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                });
+            },
+            onEachFeature: function (feature, layer) {
+                var popupContent = '<div class="popup-table">';
+                for (var key in feature.properties) {
+                    if (feature.properties.hasOwnProperty(key) && key !== 'fid' && key !== 'count_fictive' && isNotNull(feature.properties[key])) {
+                        // ÄNDERUNG: Bedingung, um Attribute mit Null-Werten, 'fid' und 'count_fictive' zu überspringen
+                        // Wenn der Wert nicht Null ist und der Schlüssel nicht 'fid' oder 'count_fictive' ist
+                        if (key === 'Webseite') {
+                            // Wenn der Attributname 'website' ist, wird ein klickbarer Link generiert
+                            popupContent += '<div class="popup-row"><div class="popup-key">' + key + ':</div><div class="popup-value"><a href="' + feature.properties[key] + '" target="_blank">' + feature.properties[key] + '</a></div></div>';
+                        } else {
+                            // Für alle anderen Attribute wird der Wert ohne Link angezeigt
+                            popupContent += '<div class="popup-row"><div class="popup-key">' + key + ':</div><div class="popup-value">' + feature.properties[key] + '</div></div>';
+                        }
+                    }
+                }
+                popupContent += '</div>';
+                layer.bindPopup(popupContent);
+            }
+        }).addTo(mymap);
+    </script>
+</body>
 </html>
