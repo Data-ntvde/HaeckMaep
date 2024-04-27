@@ -45,6 +45,7 @@
     <!-- Das sind die Geodaten -->
     <script src="daten/vg250_krs_4326.js"></script>
     <script src="daten/groups_spaces_4326.js"></script>
+    <script src="daten/groups_spaces_4326_transformed.js"></script>
 </head>
 
 <body>
@@ -67,6 +68,7 @@
         }
 
         // Polygon-Layer hinzufügen
+
         L.geoJSON(vg250_krs_4326, {
             style: function (feature) {
                 return {
@@ -85,7 +87,8 @@
             else {return "#8CB600";}
             };
 
-        L.geoJSON(groups_spaces_4326, {
+        //L.geoJSON(groups_spaces_4326, {
+        L.geoJSON(groups_spaces_4326_transformed, {
             pointToLayer: function (feature, latlng) {
                 var count_fictive = feature.properties.count_fictive;
                 var scaleFactor = 5;
@@ -107,7 +110,7 @@
                     if (feature.properties.hasOwnProperty(key) && key !== 'fid' && key !== 'count_fictive' && isNotNull(feature.properties[key])) {
                         // ÄNDERUNG: Bedingung, um Attribute mit Null-Werten, 'fid' und 'count_fictive' zu überspringen
                         // Wenn der Wert nicht Null ist und der Schlüssel nicht 'fid' oder 'count_fictive' ist
-                        if (key === 'webseite' || key === 'mailingliste' || key === 'mastodon') {
+                        if (key === 'website' || key === 'mailingliste' || key === 'mastodon') {
                             // Wenn der Attributname 'website' ist, wird ein klickbarer Link generiert
                             popupContent += '<div class="popup-row"><div class="popup-key">' + key + ':</div><div class="popup-value"><a href="' + feature.properties[key] + '" target="_blank">' + feature.properties[key] + '</a></div></div>';
                         } 
