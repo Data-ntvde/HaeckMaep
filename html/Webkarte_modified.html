@@ -107,7 +107,7 @@
             onEachFeature: function (feature, layer) {
                 var popupContent = '<div class="popup-table">';
                 for (var key in feature.properties) {
-                    if (feature.properties.hasOwnProperty(key) && key !== 'fid' && key !== 'count_fictive' && isNotNull(feature.properties[key])) {
+                    if (feature.properties.hasOwnProperty(key) && key !== 'fid' && key !== 'count_fictive' && key !== 'typ' && isNotNull(feature.properties[key])) {
                         // ÄNDERUNG: Bedingung, um Attribute mit Null-Werten, 'fid' und 'count_fictive' zu überspringen
                         // Wenn der Wert nicht Null ist und der Schlüssel nicht 'fid' oder 'count_fictive' ist
                         if (key === 'website' || key === 'mailingliste' || key === 'mastodon') {
