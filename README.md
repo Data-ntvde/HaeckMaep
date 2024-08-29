@@ -1,6 +1,6 @@
 # HaeckMaep
 
-Hier soll eine Karte entstehen, die Haecksen-Gruppierungen in Deutschland zeigt. 
+Hier soll eine Karte entstehen, die Haecksen-Gruppierungen in Deutschland zeigt. https://map.haecksen.org/
 
 Projektziele:
 - Vernetzung vereinfachen: Neu-Haecksen und Interessierten eine Orientierung bieten, wo es überall lokale Gruppen gibt (und wie man diese ggf. erreichen kann)
