@@ -3,15 +3,16 @@
 <head>
     <meta charset="utf-8">
     <title>Haecksen-Karte</title>
+    <!-- Version 1.2 -->
     
     <!-- Leaflet css und Javascript einbinden -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
     
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
     
-    <!-- jQuery einbinden -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+    <!-- topojson Bibliothek hinzufügen -->
+    <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+  
     <style>
         #mapDiv { 
             height: 700px; 
@@ -42,7 +43,7 @@
     </style>
     
     <!-- Das sind die Geodaten -->
-    <script src="daten/vg250_krs_4326.js"></script>
+    <script src="daten/lk_layer_simplified.js"></script>
     <script src="daten/groups_spaces_4326_transformed.js"></script>
 </head>
 
@@ -64,9 +65,9 @@
             return value !== null;
         }
 
-        // Polygon-Layer hinzufügen
+/*    // Polygon-Layer hinzufügen
 
-        L.geoJSON(vg250_krs_4326, {
+       L.geoJSON(lk_layer_simplified, {
             style: function (feature) {
                 return {
                     fillColor: 'transparent', 
@@ -75,7 +76,29 @@
                     fillOpacity: 0.3         
                 };
             }
-        }).addTo(mymap);
+        }).addTo(mymap);*/
+
+        // Polygon-Layer als topojson hinzufügen
+
+        fetch('https://raw.githubusercontent.com/Data-ntvde/HaeckMaep/main/html/daten/landkreise_topojson.json')
+            .then(response => response.json())
+            .then(data => {
+                // konvertieren des topojson in geojson
+                var geojson = topojson.feature(data, data.objects.landkreise_geojson);
+
+                // geojson Layer zu Karte hinzufügen
+                L.geoJSON(geojson, {
+                    style: function (feature) {
+                        return {
+                            fillColor: 'transparent', 
+                            color: '#747474',
+                            opacity: 0.7,       
+                            weight: 0.8,                
+                            fillOpacity: 0.3
+                        };
+                    }
+                }).addTo(mymap);
+            });
 
         // Punkt-GeoJSON-Layer hinzufügen
 
@@ -98,7 +121,7 @@
                     color: "#000",
                     weight: 1,
                     opacity: 1,
-                    fillOpacity: 0.8
+                    fillOpacity: 0.9
                 });
             },
             onEachFeature: function (feature, layer) {
@@ -123,6 +146,7 @@
                 });
             }
         }).addTo(mymap);
+
     </script>
 </body>
 </html>
