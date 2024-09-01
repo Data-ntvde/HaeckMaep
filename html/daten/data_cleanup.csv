@@ -1,7 +1,7 @@
 fid,Typ,Name,Webseite,Ort,Adresse,Mailingliste,E-Mail,Ansprechperson,Treffen,Rocket-Chat,Mastodon,Matrix,Hygiene-Konzept,Barrierefreiheit,lon,lat,count
 1,group,,,Aachen,,,,mosh,,,,,,,6.091233570945875,50.76776502558469,1
 2,group,,,Bamberg,,,,lemon,,,,,,,10.899700693090942,49.900667658074106,3
-3,group,,,Berlin,"WikiBär, Köpenicker Straße 45, 10179 Berlin",mail to:c47@rct.in-berlin.de,berlin@haecksen.org,,"Am zweiten Wochenende im Monat, Sa/So wechselnd, 15:00 Uhr im Wikibär. Zugang zur Mailingliste bitte per E-Mail anfragen.",#berlin,https://chaos.social/@Haecksen_Berlin,,,,13.42439364193186,52.50926975041964,11
+3,group,,,Berlin,"WikiBär, Köpenicker Straße 45, 10179 Berlin",Bitte per Mail kontaktieren,berlin@haecksen.org,,"Am zweiten Wochenende im Monat, Sa/So wechselnd, 15:00 Uhr im Wikibär. Zugang zur Mailingliste bitte per E-Mail anfragen.",#berlin,https://chaos.social/@Haecksen_Berlin,,,,13.42439364193186,52.50926975041964,11
 4,space,ACME Labs e.V.,https://acmelabs.space/meetups/flinta/,Bielefeld,"ACME Labs e.V., Mühlenstraße 5, 33607 Bielefeld",http://announce@acmelabs.space/,,,Jeden ersten und dritten Mittwoch im Monat ab 19 Uhr,,,,,,8.546503653586143,52.02061122022386,42
 5,group,,,Braunschweig,,,,naerrin,"unregelmäßig, lange Pausen",#braunschweig,,,,,10.540226543631663,52.25222394909622,6
 6,space,CCC Bremen e.V.,https://wiki.ccchb.de/wiki/Haecksen,Bremen,"CCC Bremen e.V., Zweigstraße 1, 28217 Bremen",,haecksen@ccchb.de,MoniKa,"Aktuell unregelmäßig, siehe Kalender https://ccchb.de/wiki/CCC_Bremen",#bremen,,,,,8.787834370822402,53.08655773655164,13
