@@ -3,25 +3,25 @@ fid,Typ,Name,Webseite,Ort,Adresse,Mailingliste,E-Mail,Ansprechperson,Treffen,Roc
 2,group,,,Bamberg,,,,lemon,,,,,,,10.899700693090942,49.900667658074106,3
 3,group,,,Berlin,"WikiBär, Köpenicker Straße 45, 10179 Berlin",Bitte per Mail kontaktieren,berlin@haecksen.org,,"Am zweiten Wochenende im Monat, Sa/So wechselnd, 15:00 Uhr im Wikibär. Zugang zur Mailingliste bitte per E-Mail anfragen.",#berlin,https://chaos.social/@Haecksen_Berlin,,,,13.42439364193186,52.50926975041964,11
 4,space,ACME Labs e.V.,https://acmelabs.space/meetups/flinta/,Bielefeld,"ACME Labs e.V., Mühlenstraße 5, 33607 Bielefeld",http://announce@acmelabs.space/,,,Jeden ersten und dritten Mittwoch im Monat ab 19 Uhr,,,,,,8.546503653586143,52.02061122022386,42
-5,group,,,Braunschweig,,,,naerrin,"unregelmäßig, lange Pausen",#braunschweig,,,,,10.540226543631663,52.25222394909622,6
+5,group,,,Braunschweig,,,,naerrin,unregelmäßig,#braunschweig,,,,,10.540226543631663,52.25222394909622,6
 6,space,CCC Bremen e.V.,https://wiki.ccchb.de/wiki/Haecksen,Bremen,"CCC Bremen e.V., Zweigstraße 1, 28217 Bremen",,haecksen@ccchb.de,MoniKa,"Aktuell unregelmäßig, siehe Kalender https://ccchb.de/wiki/CCC_Bremen",#bremen,,,,,8.787834370822402,53.08655773655164,13
-7,group,,,Chemnitz,,,,,,,,,,,,,
+7,space,,"https://chaoschemnitz.de/ChaosInvasion_Day#Kommunikation ",Chemnitz,"Chaostreff Chemnitz e.V., Augustusburger Str. 102, 09126 Chemnitz",,,,"Am dritten Sonntag eines Monats, außer der Monat beginnt mit einem Sonntag, dann am vierten Sonntag eines Monats, im Chaostreff Chemnitz.",,https://chaos.social/@chch (allgemeiner Account vom Chaostreff),https://matrix.to/#/#ccid:conduit.rs (FINTA Kanal),,,12.9396711,50.8306552,2
 8,group,,,Darmstadt,,,,,,,,,,,8.629501514485213,49.872925433265515,17
 9,group,,,"Frankfurt, Mainz, Wiesbaden",,,,,,,,,,,8.66373830078803,50.10681103626925,24
 10,group,,https://cccfr.de/calendar/,Freiburg / Basel,,,,,Zweiter Donnerstag im Monat 19 Uhr beim CCCFr,"#freiburgUndBasel, #haecksen_basel",,,,,7.84054216964922,47.99323857587156,9
-11,group,Murhaecksen,,Graz,,,,"Siehe interne Liste, Signal Gruppe vorhanden",Regelmäßige Treffen,,,,,,15.41654567434409,47.0726094894882,
+11,group,Murhaecksen,,Graz,,,,"Siehe interne Liste, Signal Gruppe vorhanden",Regelmäßige Treffen,,,,,,15.41654567434409,47.0726094894882,2
 12,space,Neotopia,https://wiki.cccgoe.de/wiki/Haecksen,Göttingen,"Chaostreff Göttingen e. V. c/o MLP-Haus, Von-Bar-Straße 2-4, 37075 Göttingen",,haecksen@cccgoe.de,,Zweimal monatlich,,,,,,9.944715455447092,51.54550143744939,7
 13,space,Geekfem,https://geekfem.net/,Hamburg,"CCHH, c/o FUX, Zeiseweg 9, 22765 Hamburg-Altona",,geekfem@hamburg.ccc.de,,Jeden dritten Donnerstag im Monat beim CCCHH,,https://chaos.social/@geekfem,,,,9.943997867142988,53.55830945104915,25
 14,group,Megahertz,https://megahertz-hannover.org,Hannover,"CCC Hannover e.V., c/o Stadteilzentrum Nordstadt, Klaus-Müller-Kilian-Weg 2, 30167 Hannover",,kontakt@megahertz-hannover.org,,,"#hannover, #megahertz",,,,,9.718457422370014,52.38819519061653,18
 15,group,,,Helsinki,,,,saliente,,,,,,,24.941350327237767,60.17185678215838,1
 16,space,Entropia e.V.,https://entropia.de/Haecksen@entropia,Karlsruhe,"Entropia e.V., Gewerbehof, Steinstraße 23, 76133 Karlsruhe",https://lists.entropia.de/postorius/lists/haecksen.lists.entropia.de/,,,Jeden zweiten Dienstag im Monat,#Karlsruhe,,,,,8.40715193997248,49.00660605220475,14
-17,group,in:formatische künste,https://informatischekuenste.de/,Leipzig,,,hello@informatischekuenste.de,Eliza,"Jeden Dienstag, 18:30 Uhr",,,,,,12.373548,51.324505,
+17,group,in:formatische künste,https://informatischekuenste.de/,Leipzig,,,hello@informatischekuenste.de,Eliza,"Jeden Dienstag, 18:30 Uhr",,,,,,12.373548,51.324505,3
 18,space,,https://dezentrale.space/,Leipzig,"dezentrale, Dreilindenstraße 19, 04177 Leipzig",,haecksen_leipzig@systemli.org,,Jeden letzten Dienstag im Monat ab 19 Uhr,#leipzig,,,,,12.338413872579276,51.33644916079833,8
-19,group,,,München,,,,Smettbo,Treffen am vierten Sonntag im Monat,"#muenchen, #muc_Haecksen",,,,,11.556652907142707,48.140750972786236,
+19,group,,,München,,,,Smettbo,Treffen am vierten Sonntag im Monat,"#muenchen, #muc_Haecksen",,,,,11.556652907142707,48.140750972786236,3
 20,group,,,Nordrhein-Westfalen,,,,,,#Da-NRW-lokales-Treffen,,,,,6.793525422960415,51.21962868735828,8
 21,group,,https://haecksen.nuernberg.page,Nürnberg/Erlangen/Fürth,,,haecksen@nuernberg.page,,"Jeden ersten Dienstag im Monat ab 18:30 Uhr, Ort wechselt",#Nuernberg-Erlangen-Fuerth,,,,,11.082585649957592,49.445237631795656,11
 22,group,,,Osnabrück,,,,,,,,,,,8.061554895903779,52.27294604384137,5
-23,group,,,Regensburg,,,,"darthrain, shortkath",Gerade in Gründung,#Regensburg,,,,,12.099004468587594,49.01217715080588,
+23,group,,,Regensburg,,,,"darthrain, shortkath",,#Regensburg,,,,,12.099004468587594,49.01217715080588,5
 24,group,,,Stuttgart,,stuttgart@lists.haecksen.org,princess@bofh.de,Princess,"Unregelmäßige Treffen, werden über die Mailingliste verabredet",,,,,,9.181507622704977,48.78367789126281,10
 25,group,,,Wien,,,,,Siehe interne Liste,#wien,,,,,16.377896885624935,48.185010078294425,2
-26,group,,,Zürich,,,,,,,,,,,,,
+26,group,,,Zürich,,In Erarbeitung,,cuddlycactus über Rocket oder cuddlycactus.33 über Signal,,,,,,,8.536285874785444,47.37897523782793,4
