@@ -44,7 +44,7 @@
     
     <!-- Das sind die Geodaten -->
     <script src="daten/lk_layer_simplified.js"></script>
-    <script src="daten/groups_spaces_4326_transformed.js"></script>
+    <script src="daten/groups_spaces_4326.js"></script>
 </head>
 
 <body>
@@ -107,13 +107,13 @@
             else {return "#0066ff";}
             };
 
-        L.geoJSON(groups_spaces_4326_transformed, {
+        L.geoJSON(groups_spaces_4326, {
             pointToLayer: function (feature, latlng) {
-                //var count_fictive = feature.properties.count_fictive;
+                //var count_fictive = feature.properties.count;
                 var count_fictive = 5;
                 var scaleFactor = 5;
                 var radius = Math.sqrt(count_fictive) * scaleFactor;
-                var color = define_color(feature.properties.typ);
+                var color = define_color(feature.properties.Typ);
                 
                 return L.circleMarker(latlng, {
                     radius: radius,
@@ -127,7 +127,7 @@
             onEachFeature: function (feature, layer) {
                 var popupContent = '<div class="popup-table">';
                 for (var key in feature.properties) {
-                    if (feature.properties.hasOwnProperty(key) && key !== 'fid' && key !== 'count_fictive' && key !== 'typ' && isNotNull(feature.properties[key])) {
+                    if (feature.properties.hasOwnProperty(key) && key !== 'fid' && key !== 'count' && key !== 'Typ' && isNotNull(feature.properties[key])) {
                         if (key === 'Webseite' || key === 'Mailingliste' || key === 'Mastodon') {
                             popupContent += '<div class="popup-row"><div class="popup-key">' + key + ':</div><div class="popup-value"><a href="' + feature.properties[key] + '" target="_blank">' + feature.properties[key] + '</a></div></div>';
                         } 
